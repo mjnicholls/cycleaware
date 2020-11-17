@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-success">
+    <a class="navbar-brand" href="/"><img src="/img/cycle.svg" alt="bike" width=75px height=75px></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+        <h1>Cycle Aware</h1>
+        <img src="<%= user.avatar %>" alt="" class="rounded-circle ml-auto" height="35" width="35">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link text-dark"><%= user.firstname %> <%= user.lastname %></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/users/parents">Parents</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/users/education">Education</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/users/elderly">Elderly</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/users/allPosts">View all posts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/users/create-post">Add Post</a>
+            </li>
+        </ul>
+        <a href="/users/logout" class="btn btn-secondary" style="margin: 5px;">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="headline mt-5">
+        <h2 class="pt-3 text-center">Welcome <span class="text-success font-weight-bolder"><%= user.firstname %></span>
+            Here are all the latest posts on Cycle Aware.</h2>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="mt-5">
+        <div class="table-responsive-md col-md-10 m-auto">
+            <table class="table mt-5 m-auto">
+                <thead class="bg-success">
+                    <tr>
+                        <th scope="col">avatar</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Preview</th>
+                   
+                    </tr>
+                </thead>
+              
+                <% results.forEach(function(user) { %>
+                    <% result.forEach(function(post) { %>
+                <tbody>
+                    <tr>
+                        <td><img src="<%= user.avatar %>" alt="" class="rounded-circle" height="60" width="60">
+                        </td>
+                        <td class="text-small"><%= user.firstname %> <%= user.lastname %></td>
+                        <td><%= post.postDescription %></td>
+                        <td><%= post.postTitle %></td>
+                        <td><%= post.postContent.substring(0, 1000)%></td>
+                
+                    </tr>
+                </tbody>
+                <% }); %>
+                <% }); %>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-success">
+    <a class="navbar-brand" href="/"><img src="/img/logo-dark.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+        <form class="form-inline my-2 my-lg-0" action="/users/searchResult" method="POST">
+            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search...">
+        </form>
+        <img src="<%= user.avatar %>" alt="" class="rounded-circle ml-auto" height="35" width="35">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link text-dark"><%= user.firstname %> <%= user.lastname %></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark font-weight-bolder disabled active" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/users/parents">Parents</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/users/education">Education</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/users/elderly">Elderly</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/users/allUsers">View all users</a>
+            </li>
+        </ul>
+        <a href="/users/logout" class="btn btn-secondary" style="margin: 5px;">Logout</a>
+    </div>
+</nav>
+
+
+<div class="container">
+
+    <div class="row row-cols-1 row-cols-md-3 mt-5">
+        <% results.forEach(function(post) { %>
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <img src="../../img/bike.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><%= post.postTitle %></h5>
+                    <p class="card-text"><%= post.postDescription.substring(0, 30) %></p>
+                    <p class="card-text"><%= post.postContent.substring(0, 2000) %>.....</p>
+                    <a class="card-text btn btn-success" href="#">Read More...</a>
+                </div>
+                <div class="card-footer">
+                    <p class="post-meta">Posted by
+                        <a href="#"><%= post.username %></a>
+                        on <%= post.date.toDateString() %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>

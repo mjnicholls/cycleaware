@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-success">
+    <a class="navbar-brand" href="/"><img src="/img/cycle.svg" alt="cycle" width=75px height=75px></a>
+    <h1>Cycle Aware</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link text-white btn btn-secondary active" href="/users/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white btn btn-secondary" href="/users/register">Become a member</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+
+    <div class="mt-5 pt-2">
+        <h2 class="text-center">Login to YourSafety Online Portal.</h2>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body">
+                <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Login</h1>
+                <%- include('./partials/messages') %>
+                <form action="/users/login" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Enter Password" />
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Login</button>
+                </form>
+                <p class="lead mt-4">
+                    No Account? <a class="text-primary" href="/users/register">Register</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
